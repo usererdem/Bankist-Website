@@ -201,7 +201,7 @@ img {
     background-size: 400%;
     background-image: linear-gradient(
       45deg,
-      #7ed56f,
+      /* #7ed56f, */
       #28b485,
       #2998ff,
       #5643fa
@@ -261,6 +261,17 @@ img {
     position: absolute;
     top: 7.5rem;
     left: 2rem;
+    transition: all .3s ease-in-out;
+    padding: 1rem;
+    height: 5.5rem;
+    background-color: transparent;
+  }
+
+  .nav__logo:hover,
+  .nav__logo:active {
+    background-color: #fff;
+    transform: scale(1.10, 1.08)
+
   }
 
   .nav__link:hover,
@@ -269,6 +280,23 @@ img {
     color: #55c57a;
     transform: translateX(1rem);
   }
+
+  .nav__link--btn:link,
+  .nav__link--btn:visited {
+    border-radius: .5rem;
+    /* background-color: transparent; */
+    background-image: linear-gradient(45deg,#9be15d, #39b385);
+    transform: scale(1.07, 1.05) skewX(-5deg);
+    color: #333;
+    font-weight: bold;
+  }
+
+  .nav__link--btn:hover,
+  .nav__link--btn:active {
+    transform: translateX(1rem);
+    /* transform: translateX(1rem) scale(1.07, 1.05) skewX(-10deg); */
+  }
+  
 
   /* Functionality */
   .navigation__checkbox:checked ~ .navigation__background {
