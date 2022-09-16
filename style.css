@@ -180,8 +180,8 @@ img {
     height: 7rem;
     width: 7rem;
     position: fixed;
-    top: 6rem;
-    right: 6rem;
+    top: 4rem;
+    right: 4rem;
     border-radius: 50%;
     z-index: 2000;
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
@@ -194,15 +194,14 @@ img {
     width: 6rem;
     border-radius: 50%;
     position: fixed;
-    top: 6.5rem;
-    right: 6.5rem;
+    top: 4.5rem;
+    right: 4.5rem;
     z-index: 1000;
     transition: transform 0.8s cubic-bezier(0.83, 0, 0.17, 1);
     background-size: 400%;
     background-image: linear-gradient(
       45deg,
-      /* #7ed56f, */
-      #28b485,
+      /* #7ed56f, */ #28b485,
       #2998ff,
       #5643fa
     );
@@ -259,9 +258,9 @@ img {
 
   .nav__logo {
     position: absolute;
-    top: 7.5rem;
+    top: 5.5rem;
     left: 2rem;
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     padding: 1rem;
     height: 5.5rem;
     background-color: transparent;
@@ -270,8 +269,7 @@ img {
   .nav__logo:hover,
   .nav__logo:active {
     background-color: #fff;
-    transform: scale(1.10, 1.08)
-
+    transform: scale(1.1, 1.08);
   }
 
   .nav__link:hover,
@@ -283,9 +281,9 @@ img {
 
   .nav__link--btn:link,
   .nav__link--btn:visited {
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     /* background-color: transparent; */
-    background-image: linear-gradient(45deg,#9be15d, #39b385);
+    background-image: linear-gradient(45deg, #9be15d, #39b385);
     transform: scale(1.07, 1.05) skewX(-5deg);
     color: #333;
     font-weight: bold;
@@ -296,7 +294,6 @@ img {
     transform: translateX(1rem);
     /* transform: translateX(1rem) scale(1.07, 1.05) skewX(-10deg); */
   }
-  
 
   /* Functionality */
   .navigation__checkbox:checked ~ .navigation__background {
@@ -349,7 +346,9 @@ img {
     background-color: transparent;
   }
 
-  .navigation__checkbox:checked + .navigation__button .navigation__icon::before {
+  .navigation__checkbox:checked
+    + .navigation__button
+    .navigation__icon::before {
     top: 0;
     transform: rotate(135deg);
   }
@@ -357,7 +356,22 @@ img {
     top: 0;
     transform: rotate(-135deg);
   }
+}
 
+@media (max-width: 37.5em) {
+  .navigation__button {
+    top: 3rem;
+    right: 3rem;
+  }
+
+  .navigation__background {
+    top: 3.5rem;
+    right: 3.5rem;
+  }
+
+  .nav__logo {
+    top: 4.5rem;
+  }
 }
 
 /* HEADER */
