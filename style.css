@@ -362,11 +362,17 @@ img {
   .navigation__button {
     top: 3rem;
     right: 3rem;
+
+    /* top: 82%;
+    right: 78%; */
   }
 
   .navigation__background {
     top: 3.5rem;
     right: 3.5rem;
+
+    /* top: 82.5%;
+    right: 78.5%; */
   }
 
   .nav__logo {
