@@ -33,6 +33,11 @@ body {
   background-color: #f3f3f3;
 }
 
+/* Pointer Event */
+.pointer-event {
+  pointer-events: none;
+}
+
 /* GENERAL ELEMENTS */
 .section {
   padding: 15rem 3rem;
