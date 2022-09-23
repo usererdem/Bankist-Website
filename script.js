@@ -62,6 +62,16 @@ navButton.addEventListener('click', function () {
   navLogo.classList.toggle('pointer-event');
 });
 
+navLink.addEventListener('click', function() {
+  navLink.classList.toggle('pointer-event');
+  navLogo.classList.toggle('pointer-event');
+})
+
+navLogo.addEventListener('click', function() {
+  navLink.classList.toggle('pointer-event');
+  navLogo.classList.toggle('pointer-event');
+})
+
 navLink.addEventListener('click', function () {
   checkbox.checked = !checkbox.checked;
 });
