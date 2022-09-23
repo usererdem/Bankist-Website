@@ -223,6 +223,7 @@ img {
     opacity: 0;
     width: 0;
     transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    width: 50%;
   }
 
   .nav__links {
