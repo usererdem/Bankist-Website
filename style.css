@@ -34,7 +34,7 @@ body {
 }
 
 /* Pointer Event */
-.pointer-event {
+.pointer-events {
   pointer-events: none;
 }
 

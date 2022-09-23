@@ -56,38 +56,37 @@ document.addEventListener('keydown', function (e) {
 // Adding pointer-event:none as default to all links and to logo in mobile
 if (window.innerWidth <= 900) {
   for (const link of navLinks) {
-    link.classList.add('pointer-event');
+    link.classList.add('pointer-events');
   }
-  navLogo.classList.add('pointer-event');
-}
+  navLogo.classList.add('pointer-events');
 
-// Toggling pointer-event between: (auto-none) 
-navButton.addEventListener('click', function () {
-  for (const link of navLinks) {
-    link.classList.toggle('pointer-event');
-  }
-  navLogo.classList.toggle('pointer-event');
-});
-
-// Selecting every single navLink for toggle pointer-event
-for (const link of navLinks) {
-  link.addEventListener('click', function () {
+  // Toggling pointer-event between: (auto-none)
+  navButton.addEventListener('click', function () {
     for (const link of navLinks) {
-      link.classList.toggle('pointer-event');
+      link.classList.toggle('pointer-events');
     }
-    navLogo.classList.toggle('pointer-event');
+    navLogo.classList.toggle('pointer-events');
+  });
+
+  // Selecting every single navLink for toggle pointer-event
+  for (const link of navLinks) {
+    link.addEventListener('click', function () {
+      for (const link of navLinks) {
+        link.classList.toggle('pointer-events');
+      }
+      navLogo.classList.toggle('pointer-events');
+    });
+  }
+
+  navLogo.addEventListener('click', function () {
+    for (const link of navLinks) {
+      link.classList.toggle('pointer-events');
+    }
+    navLogo.classList.toggle('pointer-events');
   });
 }
-
-navLogo.addEventListener('click', function () {
-  for (const link of navLinks) {
-    link.classList.toggle('pointer-event');
-  }
-  navLogo.classList.toggle('pointer-event');
-});
-
 // Toggling checkbox For navigation functionality
-// (Functionality created in CSS) 
+// (Functionality created in CSS)
 for (const link of navLinks) {
   link.addEventListener('click', function () {
     checkbox.checked = !checkbox.checked;
