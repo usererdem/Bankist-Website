@@ -1,25 +1,25 @@
 'use strict';
 ///////////////////////////////////////
 //////////// Elements
-// Modal window
+//// Modal window
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
-// Mobile Navigation
-const navLink = document.querySelector('.nav__links');
+//// Mobile Navigation
+const navLinks = document.querySelectorAll('.nav__link');
 const navLogo = document.querySelector('.nav__logo');
 
 const navButton = document.querySelector('.navigation__button');
 const checkbox = document.getElementById('navi-toggle');
 
-// Scrolling Animation
+//// Scrolling Animation
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 
 ///////////////////////////////////////
 //////////// Functions
-// Modal window
+//// Modal window
 const openModal = function (e) {
   e.preventDefault();
   if (window.innerWidth <= 900) {
@@ -40,7 +40,7 @@ const closeModal = function () {
 
 ///////////////////////////////////////
 //////////// Event Listeners
-// Modal window
+//// Modal window
 btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
 
 btnCloseModal.addEventListener('click', closeModal);
@@ -52,35 +52,79 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-// Mobile Navigation
+//// Mobile Navigation
+// Adding pointer-event:none as default to all links and to logo in mobile
 if (window.innerWidth <= 900) {
-  navLink.classList.add('pointer-event');
+  for (const link of navLinks) {
+    link.classList.add('pointer-event');
+  }
   navLogo.classList.add('pointer-event');
 }
+
+// Toggling pointer-event between: (auto-none) 
 navButton.addEventListener('click', function () {
-  navLink.classList.toggle('pointer-event');
+  for (const link of navLinks) {
+    link.classList.toggle('pointer-event');
+  }
   navLogo.classList.toggle('pointer-event');
 });
 
-navLink.addEventListener('click', function() {
-  navLink.classList.toggle('pointer-event');
-  navLogo.classList.toggle('pointer-event');
-})
+// Selecting every single navLink for toggle pointer-event
+for (const link of navLinks) {
+  link.addEventListener('click', function () {
+    for (const link of navLinks) {
+      link.classList.toggle('pointer-event');
+    }
+    navLogo.classList.toggle('pointer-event');
+  });
+}
 
-navLogo.addEventListener('click', function() {
-  navLink.classList.toggle('pointer-event');
+navLogo.addEventListener('click', function () {
+  for (const link of navLinks) {
+    link.classList.toggle('pointer-event');
+  }
   navLogo.classList.toggle('pointer-event');
-})
-
-navLink.addEventListener('click', function () {
-  checkbox.checked = !checkbox.checked;
 });
+
+// Toggling checkbox For navigation functionality
+// (Functionality created in CSS) 
+for (const link of navLinks) {
+  link.addEventListener('click', function () {
+    checkbox.checked = !checkbox.checked;
+  });
+}
+
 navLogo.addEventListener('click', function () {
   checkbox.checked = !checkbox.checked;
 });
 
-// Scrolling Animation
+//// Scrolling Animation
 btnScrollTo.addEventListener('click', function (e) {
-  const s1coords = section1.getBoundingClientRect();
+  section1.scrollIntoView({ behavior: 'smooth' });
+
+  // If browser doesn't support, here is an old way to do it
+  /* const s1coords = section1.getBoundingClientRect();
   console.log(s1coords);
+
+  console.log(e.target.getBoundingClientRect());
+
+  console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
+
+  console.log(
+    'height/width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+
+  // Scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset,
+  // );
+
+  window.scrollTo({
+    left: s1coords.left + window.pageXOffset,
+    top: s1coords.top + window.pageYOffset,
+    behavior: 'smooth',
+  }); */
 });
