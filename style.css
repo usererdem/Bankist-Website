@@ -38,6 +38,10 @@ body {
   pointer-events: none;
 }
 
+.hide-z-index {
+  z-index: -1;
+}
+
 /* GENERAL ELEMENTS */
 .section {
   padding: 15rem 3rem;
@@ -263,9 +267,7 @@ img {
   }
 
   .nav__logo {
-    position: absolute;
-    top: 5.5rem;
-    left: 2rem;
+    
     transition: all 0.3s ease-in-out;
     padding: 1rem;
     height: 5.5rem;
@@ -276,6 +278,12 @@ img {
   .nav__logo:active {
     background-color: #fff;
     transform: scale(1.1, 1.08);
+  }
+
+  .nav__logo-link {
+    position: absolute;
+    top: 5.5rem;
+    left: 2rem;
   }
 
   .nav__link:hover,

@@ -8,7 +8,10 @@ const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 //// Mobile Navigation
 const navLinks = document.querySelectorAll('.nav__link');
+const navLinks1 = document.querySelector('.nav__links');
 const navLogo = document.querySelector('.nav__logo');
+const navLogoLink = document.querySelector('.nav__logo-link');
+const nav = document.querySelector('.nav');
 
 const navButton = document.querySelector('.navigation__button');
 const checkbox = document.getElementById('navi-toggle');
@@ -16,6 +19,7 @@ const checkbox = document.getElementById('navi-toggle');
 //// Scrolling Animation
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
+const header = document.querySelector('#header');
 
 ///////////////////////////////////////
 //////////// Functions
@@ -38,6 +42,14 @@ const closeModal = function () {
   overlay.classList.add('hidden');
 };
 
+function navBtnTogglePointerEvents() {
+  for (const link of navLinks) {
+    link.classList.toggle('pointer-events');
+  }
+  navLogo.classList.toggle('pointer-events');
+  nav.classList.toggle('pointer-events');
+}
+
 ///////////////////////////////////////
 //////////// Event Listeners
 //// Modal window
@@ -55,35 +67,16 @@ document.addEventListener('keydown', function (e) {
 //// Mobile Navigation
 // Adding pointer-event:none as default to all links and to logo in mobile
 if (window.innerWidth <= 900) {
-  for (const link of navLinks) {
-    link.classList.add('pointer-events');
-  }
-  navLogo.classList.add('pointer-events');
+  navBtnTogglePointerEvents()
 
   // Toggling pointer-event between: (auto-none)
-  navButton.addEventListener('click', function () {
-    for (const link of navLinks) {
-      link.classList.toggle('pointer-events');
-    }
-    navLogo.classList.toggle('pointer-events');
-  });
-
+  navButton.addEventListener('click', navBtnTogglePointerEvents);
   // Selecting every single navLink for toggle pointer-event
   for (const link of navLinks) {
-    link.addEventListener('click', function () {
-      for (const link of navLinks) {
-        link.classList.toggle('pointer-events');
-      }
-      navLogo.classList.toggle('pointer-events');
-    });
+    link.addEventListener('click', navBtnTogglePointerEvents);
   }
 
-  navLogo.addEventListener('click', function () {
-    for (const link of navLinks) {
-      link.classList.toggle('pointer-events');
-    }
-    navLogo.classList.toggle('pointer-events');
-  });
+  navLogo.addEventListener('click', navBtnTogglePointerEvents);
 }
 // Toggling checkbox For navigation functionality
 // (Functionality created in CSS)
@@ -126,4 +119,29 @@ btnScrollTo.addEventListener('click', function (e) {
     top: s1coords.top + window.pageYOffset,
     behavior: 'smooth',
   }); */
+});
+
+//// Page navigation
+// navLinks.forEach(function(el) {
+//   el.addEventListener('click', function(e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     document.querySelector(id).scrollIntoView({behavior: 'smooth'})
+//   })
+// })
+
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
+
+navLinks1.addEventListener('click', function (e) {
+  // Matching strategy
+  if (e.target.classList.contains('nav__link--scroll')) {
+    e.preventDefault();
+    const id = e.target.getAttribute('id');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
+navLogoLink.addEventListener('click', function (e) {
+  header.scrollIntoView({ behavior: 'smooth' });
 });
