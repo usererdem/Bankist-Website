@@ -148,6 +148,7 @@ img {
   transition: all 0.3s;
   padding-top: 0.5rem;
   margin-right: 2rem;
+  cursor: pointer;
 }
 
 .nav__links {
