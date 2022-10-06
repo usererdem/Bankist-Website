@@ -6,7 +6,7 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
-//// Mobile Navigation
+//// Mobile Navigation - Sticky Navigation
 const navLinks = document.querySelectorAll('.nav__link');
 const navLinks1 = document.querySelector('.nav__links');
 const navLogo = document.querySelector('.nav__logo');
@@ -15,6 +15,9 @@ const nav = document.querySelector('.nav');
 
 const navButton = document.querySelector('.navigation__button');
 const checkbox = document.getElementById('navi-toggle');
+
+const headerClass = document.querySelector('.header');
+const navigation = document.querySelector('.navigation');
 
 //// Scrolling Animation
 const btnScrollTo = document.querySelector('.btn--scroll-to');
@@ -244,9 +247,8 @@ const obsOptions = {
 const observer = new IntersectionObserver(obsCallback, obsOptions);
 observer.observe(section1); */
 
-const headerClass = document.querySelector('.header');
-const navigation = document.querySelector('.navigation')
-const navHeight = navigation.getBoundingClientRect().height - (nav.getBoundingClientRect().height - navigation.getBoundingClientRect().height);
+const navHeight = nav.getBoundingClientRect().height;
+const navHeight2 = navigation.getBoundingClientRect().height;
 
 function stickyNav(entries) {
   const [entry] = entries;
@@ -258,6 +260,29 @@ function stickyNav(entries) {
 const headerObserver = new IntersectionObserver(stickyNav, {
   root: null,
   threshold: 0,
-  rootMargin: `-${navHeight}px`,
+  rootMargin: `-${navHeight2 + 38}px`,
 });
 headerObserver.observe(header);
+
+// Reveal sections
+const allSections = document.querySelectorAll('.section');
+
+function revealSection(entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
+
+  if (!entry.isIntersecting) return;
+
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
+}
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+});
+
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
+});
