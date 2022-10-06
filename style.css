@@ -706,6 +706,11 @@ h4 {
 }
 
 @media (max-width: 56.25em) {
+  /* ---------- Header Image ---------- */
+  .header__img {
+    transform: translateY(-1rem);
+  }
+
   /* ---------- Mobile Navigation ---------- */
   .navigation__button {
     background-color: #fff;
@@ -914,6 +919,21 @@ h4 {
 }
 
 @media (max-width: 37.5em) {
+  /* ---------- Header Image ---------- */
+  .header__img {
+    display: none;
+  }
+
+  .header__title {
+    row-gap: 4rem;
+  }
+
+  .header__title h1,
+  .header__title h4 {
+    grid-column: 1 / -1;
+  }
+
+  /* ---------- Mobile Navigation ---------- */
   .navigation__button {
     top: 3rem;
     right: 3rem;
@@ -933,4 +953,6 @@ h4 {
   .nav__logo {
     top: 4.5rem;
   }
+
+  /* ---------- Operations Content ---------- */
 }
