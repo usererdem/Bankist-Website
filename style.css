@@ -42,6 +42,10 @@ body {
   z-index: -1;
 }
 
+.opacity {
+  opacity: 0;
+}
+
 /* GENERAL ELEMENTS */
 .section {
   padding: 15rem 3rem;
