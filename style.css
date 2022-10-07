@@ -956,4 +956,22 @@ h4 {
   }
 
   /* ---------- Operations Content ---------- */
+  .operations__content--active {
+    display: block;
+  }
+
+  .operations__content {
+    padding: 0 2rem 3rem 2rem;
+  }
+
+  .operations__icon--1,
+  .operations__icon--2,
+  .operations__icon--3 {
+    margin: 0 auto;
+  }
+
+  .operations__tab { 
+    margin-right: 0.5rem;
+    padding: 1rem 2rem;
+  }
 }
