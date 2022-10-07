@@ -89,6 +89,7 @@ body {
   border-radius: 10rem;
   cursor: pointer;
   transition: all 0.3s;
+  color: #333;
 }
 
 .btn:hover {
