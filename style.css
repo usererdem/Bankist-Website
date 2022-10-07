@@ -767,6 +767,7 @@ h4 {
     list-style: none;
     text-align: center;
     width: 100%;
+    white-space: nowrap;
   }
 
   .nav__item {
