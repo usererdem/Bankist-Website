@@ -589,6 +589,13 @@ h4 {
   font-size: 1.6rem;
   color: #eee;
   text-decoration: none;
+  transition: all 0.3s;
+  padding: 1rem;
+}
+
+.footer__link:hover,
+.footer__link:active {
+  box-shadow: 0 1rem 2rem rgb(0 0 0 / 40%);
 }
 
 .footer__logo {
