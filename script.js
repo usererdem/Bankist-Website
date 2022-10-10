@@ -35,6 +35,12 @@ const allSections = document.querySelectorAll('.section');
 //// Lazy Loading Images
 const imgTargets = document.querySelectorAll('img[data-src]');
 
+//// Slider
+const slides = document.querySelectorAll('.slide');
+const btnLeft = document.querySelector('.slider__btn--left');
+const btnRight = document.querySelector('.slider__btn--right');
+const slider = document.querySelector('.slider');
+
 //////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////// Functions /////////////////////////////////
 //// Modal window
@@ -49,12 +55,12 @@ function openModal(e) {
     modal.classList.remove('hidden');
     overlay.classList.remove('hidden');
   }
-};
+}
 
 function closeModal() {
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
-};
+}
 
 function navBtnTogglePointerEvents() {
   for (const link of navLinks) {
@@ -104,7 +110,6 @@ function revealSection(entries, observer) {
 // Lazy Loading images
 function loadImg(entries, observer) {
   const [entry] = entries;
-  console.log(entry);
 
   if (!entry.isIntersecting) return;
 
@@ -115,6 +120,26 @@ function loadImg(entries, observer) {
     entry.target.classList.remove('lazy-img');
   });
   observer.unobserve(entry.target);
+}
+
+//// Slider
+let curSlide = 0;
+const maxSlide = slides.length - 1;
+
+function goToSlide(slide) {
+  slides.forEach(
+    (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+  );
+}
+
+function nextSlide() {
+  maxSlide === curSlide ? (curSlide = 0) : curSlide++;
+  goToSlide(curSlide);
+}
+
+function prevSlide() {
+  curSlide <= 0 ? curSlide = maxSlide : curSlide--;
+  goToSlide(curSlide);
 }
 ////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////// Event Listeners /////////////////////////////////
@@ -195,7 +220,6 @@ btnScrollTo.addEventListener('click', function (e) {
 //   })
 // })
 
-
 /* // 1. Add event listener to common parent element
 // 2. Determine what element originated the event */
 navLinks1.addEventListener('click', function (e) {
@@ -233,7 +257,6 @@ tabsContainer.addEventListener('click', function (e) {
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
 });
-
 
 // Navigation Menu fade animation
 // With Closure
@@ -306,7 +329,7 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 
 allSections.forEach(function (section) {
   sectionObserver.observe(section);
-  section.classList.add('section--hidden');
+  /* section.classList.add('section--hidden'); */
 });
 
 //// Lazy Loading Images
@@ -317,3 +340,11 @@ const imgObserver = new IntersectionObserver(loadImg, {
 });
 
 imgTargets.forEach(img => imgObserver.observe(img));
+
+//// Slider
+goToSlide(0);
+
+// Next Slide
+btnRight.addEventListener('click', nextSlide);
+// Prev Slide
+btnLeft.addEventListener('click', prevSlide);
