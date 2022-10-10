@@ -1045,4 +1045,18 @@ h4 {
   .footer__link {
     font-size: 2.5rem;
   }
+
+  /* ---------- Modal ---------- */
+  .modal {
+    padding: 5rem 2rem;
+  }
+
+  .modal__form {
+    gap: 1rem;
+    margin: 0;
+  }
+
+  .modal__form input {
+    padding: 1rem 0.5rem;
+  }
 }
