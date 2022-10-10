@@ -919,6 +919,14 @@ h4 {
     padding: 7rem 3rem;
   }
 
+  .slide {
+    height: 60rem;
+  }
+
+  .slider {
+    height: 65rem;
+  }
+
   /* ---------- Footer ---------- */
   .footer {
     padding: 6rem 3rem;
@@ -995,6 +1003,42 @@ h4 {
   .operations__tab {
     margin-right: 0.5rem;
     padding: 1rem 2rem;
+  }
+
+  /* ---------- Slider ---------- */
+  .testimonial {
+    width: 90%;
+  }
+
+  .testimonial__text {
+    margin-bottom: 2.5rem;
+  }
+
+  .testimonial__author {
+    margin-bottom: 5rem;
+  }
+
+  .testimonial::before {
+    display: none;
+  }
+
+  .slide {
+    height: 70rem;
+  }
+
+  .slider {
+    height: 75rem;
+  }
+
+  .slider__btn {
+    top: 94%;
+  }
+
+  .slider__btn--left {
+    left: 20%;
+  }
+  .slider__btn--right {
+    right: 20%;
   }
 
   /* ---------- Footer ---------- */
